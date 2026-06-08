@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Elona's Toys — Kids Store Lebanon</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-soft: #FEF9F5;
+            --primary: #FF6B4A;
+            --primary-dark: #E55536;
+            --accent-gold: #FFB347;
+            --dark: #2B2A28;
+            --mid: #5A5A5A;
+            --card-white: #FFFFFF;
+            --border-light: #FFE6DE;
+            --shadow-sm: 0 12px 28px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 35px -12px rgba(0,0,0,0.15);
+            --radius-card: 28px;
+            --radius-btn: 40px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-soft);
+            color: var(--dark);
+            scroll-behavior: smooth;
+        }
+
+        /* ===== HEADER ===== */
+        .top-banner {
+            background: #2B2A28;
+            color: rgba(255,255,240,0.85);
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 10px 16px;
+            letter-spacing: 0.3px;
+        }
+        .top-banner a {
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .main-header {
+            background: var(--card-white);
+            backdrop-filter: blur(0px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: #2B2A28;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+        }
+        .logo-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+        .logo-text span {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: transparent;
+            border: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 8px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--mid);
+        }
+        .nav-btn.active, .nav-btn:hover {
+            background: #FFF1EC;
+            color: var(--primary);
+        }
+        .wa-header {
+            background: #25D366;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+        }
+        .wa-header:hover {
+            transform: translateY(-2px);
+            background: #20b859;
+        }
+
+        /* ===== PAGES ===== */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .page.active-page {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(120deg, #FFF3ED 0%, #FFFFFF 100%);
+            padding: 60px 24px 50px;
+        }
+        .hero-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: inline-block;
+            padding: 5px 16px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        .hero-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: #1f1f1e;
+            margin-bottom: 16px;
+        }
+        .hero-text h2 em {
+            color: var(--primary);
+            font-style: normal;
+        }
+        .hero-text p {
+            color: var(--mid);
+            max-width: 480px;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 18px rgba(255,107,74,0.3);
+        }
+        .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid var(--primary);
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .hero-gallery {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .gal-item {
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background: #FFE2D6;
+        }
+        .gal-item.tall {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+        .gal-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .gal-item:hover img {
+            transform: scale(1.03);
+        }
+
+        /* TRUST */
+        .trust-row {
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            padding: 18px 24px;
+        }
+        .trust-flex {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #5a5a5a;
+        }
+
+        /* CATEGORY STRIP */
+        .category-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 48px 24px 20px;
+        }
+        .category-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+        }
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .cat-card {
+            border-radius: 36px;
+            overflow: hidden;
+            background: white;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+        .cat-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+        .cat-info {
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .cat-name {
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        .cat-count {
+            font-size: 0.7rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* PRODUCT GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 28px;
+        }
+        .product-card {
+            background: var(--card-white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            transition: 0.25s;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .product-img {
+            aspect-ratio: 1 / 1;
+            position: relative;
+            background: #faf2ed;
+            overflow: hidden;
+        }
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .badge-hot {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+        .ig-preview-btn {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.2s;
+            color: #262626;
+        }
+        .product-info {
+            padding: 16px 16px 20px;
+        }
+        .product-category {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .product-name {
+            font-weight: 800;
+            font-size: 1rem;
+            margin: 6px 0 4px;
+        }
+        .product-desc {
+            font-size: 0.75rem;
+            color: #6C6A67;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .product-age {
+            font-size: 0.7rem;
+            background: #F4EFEA;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 100px;
+            margin-bottom: 14px;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .wa-btn {
+            background: #25D366;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .price-tag {
+            font-weight: 700;
+            color: var(--mid);
+            font-size: 0.8rem;
+        }
+
+        /* Category header */
+        .cat-header {
+            background: #2B2A28;
+            color: white;
+            padding: 48px 24px;
+            text-align: center;
+        }
+        .cat-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+        }
+        .section-padded {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .contact-strip {
+            background: var(--primary);
+            text-align: center;
+            padding: 60px 24px;
+            color: white;
+            border-radius: 48px 48px 0 0;
+            margin-top: 20px;
+        }
+        .contact-strip a {
+            background: white;
+            color: var(--primary);
+            padding: 14px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        footer {
+            background: #1C1B1A;
+            color: #aaa;
+            text-align: center;
+            padding: 32px;
+            font-size: 0.75rem;
+        }
+        @media (max-width: 780px) {
+            .header-container { flex-wrap: wrap; height: auto; padding: 12px 16px; gap: 12px; }
+            .nav-links { order: 3; width: 100%; justify-content: center; }
+            .hero-gallery { display: none; }
+            .products-grid { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-banner">
+    📍 Khaldeh, Facing Rammal Supermarket · 💬 <a href="https://wa.me/96178702712" target="_blank">WhatsApp 78 702 712</a> · @elonastoys
+</div>
+
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo-area" onclick="showPage('home')">
+            <div class="logo-icon">🧸</div>
+            <div class="logo-text">
+                <h1>Elona's Toys</h1>
+                <span>KIDS STORE · LEBANON</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-page="home">Home</button>
+            <button class="nav-btn" data-page="plush">Plush & Dolls</button>
+            <button class="nav-btn" data-page="educational">Educational</button>
+            <button class="nav-btn" data-page="fashion">Baby Fashion</button>
+            <button class="nav-btn" data-page="outdoor">Outdoor & RC</button>
+            <button class="nav-btn" data-page="essentials">Essentials</button>
+        </div>
+        <a href="https://wa.me/96178702712" class="wa-header" target="_blank"><i class="fab fa-whatsapp"></i> 78 702 712</a>
+    </div>
+</header>
+
+<!-- HOME PAGE -->
+<div id="home-page" class="page active-page">
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <span class="hero-badge">✨ NEW ARRIVALS IN STORE</span>
+                <h2>Quality Toys for <em>Happy Kids</em></h2>
+                <p>Your one-stop kids store in Khaldeh — toys, fashion & essentials. Quality you can trust, joy they'll never forget.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="showPage('plush')">Shop Now →</button>
+                    <button class="btn-outline-light" onclick="showPage('educational')">Discover Toys</button>
+                </div>
+            </div>
+            <div class="hero-gallery">
+                <div class="gal-item tall"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=700&fit=crop" alt="plush"></div>
+                <div class="gal-item"><img src="https://images.unsplash.com/photo-1567653418876-5bb0e566e1c2?w=400&h=400&fit=crop" alt="educational"></div>
+                <div class="gal-item"><img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?w=400&h=400&fit=crop" alt="fashion"></div>
+            </div>
+        </div>
+    </section>
+    <div class="trust-row">
+        <div class="trust-flex">
+            <div class="trust-item"><i class="fas fa-check-circle" style="color:#FF6B4A;"></i> Quality You Can Trust</div>
+            <div class="trust-item"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Order via WhatsApp</div>
+            <div class="trust-item"><i class="fas fa-map-marker-alt" style="color:#FFB347;"></i> Khaldeh, Facing Rammal</div>
+            <div class="trust-item"><i class="fas fa-gift"></i> Gift Wrapping</div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h3>Browse by Category</h3>
+        <div class="cat-grid">
+            <div class="cat-card" onclick="showPage('plush')"><img src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=300&h=300&fit=crop" alt="plush"><div class="cat-info"><div class="cat-name">🧸 Plush & Dolls</div><div class="cat-count">10+ items</div></div></div>
+            <div class="cat-card" onclick="showPage('educational')"><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=300&h=300&fit=crop" alt="edu"><div class="cat-info"><div class="cat-name">🧠 Educational</div><div class="cat-count">10+ items</div></div></div>
+            <div class="cat-card" onclick="showPage('fashion')"><img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?w=300&h=300&fit=crop" alt="fashion"><div class="cat-info"><div class="cat-name">👕 Baby Fashion</div><div class="cat-count">10+ items</div></div></div>
+            <div class="cat-card" onclick="showPage('outdoor')"><img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&h=300&fit=crop" alt="rc"><div class="cat-info"><div class="cat-name">🚀 Outdoor & RC</div><div class="cat-count">10+ items</div></div></div>
+            <div class="cat-card" onclick="showPage('essentials')"><img src="https://images.unsplash.com/photo-1586769852044-692d6e3703f0?w=300&h=300&fit=crop" alt="essentials"><div class="cat-info"><div class="cat-name">🛒 Essentials</div><div class="cat-count">10+ items</div></div></div>
+        </div>
+    </div>
+
+    <div class="section-padded">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 28px;">
+            <h3 style="font-family: 'Playfair Display';">✨ Featured Products</h3>
+            <button class="nav-btn" onclick="showPage('plush')" style="background:#FFF1EC;">View all →</button>
+        </div>
+        <div id="featured-grid" class="products-grid"></div>
+    </div>
+
+    <div class="contact-strip">
+        <h3>Ready to Order?</h3>
+        <p style="max-width: 500px; margin: 12px auto;">Browse in-store or message us on WhatsApp. We're happy to help you find the perfect gift for your little one.</p>
+        <a href="https://wa.me/96178702712" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp · 78 702 712</a>
+    </div>
+</div>
+
+<!-- Category pages structure -->
+<div id="plush-page" class="page"><div class="cat-header"><h2>🧸 Plush & Dolls</h2><p>Soft, safe & cuddly</p></div><div class="section-padded" id="plush-grid"></div></div>
+<div id="educational-page" class="page"><div class="cat-header"><h2>🧠 Educational Toys</h2><p>Learn. Play. Grow.</p></div><div class="section-padded" id="educational-grid"></div></div>
+<div id="fashion-page" class="page"><div class="cat-header"><h2>👕 Baby Fashion</h2><p>Cute outfits for every mood</p></div><div class="section-padded" id="fashion-grid"></div></div>
+<div id="outdoor-page" class="page"><div class="cat-header"><h2>🚀 Outdoor & RC Toys</h2><p>Fun for curious minds</p></div><div class="section-padded" id="outdoor-grid"></div></div>
+<div id="essentials-page" class="page"><div class="cat-header"><h2>🛒 Baby Essentials</h2><p>Making parenting easier</p></div><div class="section-padded" id="essentials-grid"></div></div>
+
+<footer>
+    <p>🐻 Elona's Toys · Your One-Stop Kids Store · Fashion | Toys | Essentials</p>
+    <p>📍 Khaldeh, Facing Rammal Supermarket · 💬 <a href="https://wa.me/96178702712" style="color:#FFB347;">78 702 712</a> · @elonastoys</p>
+    <p style="margin-top: 12px;">© 2026 Elona's Toys. All Rights Reserved.</p>
+</footer>
+
+<!-- Instagram Modal -->
+<div id="igModal" style="display: none; position: fixed; inset:0; background: rgba(0,0,0,0.75); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px);" onclick="closeIgModal(event)">
+    <div style="max-width: 420px; width: 90%; background: white; border-radius: 32px; overflow: hidden;" onclick="event.stopPropagation()">
+        <div style="aspect-ratio: 1/1; background: #f3f3f3; position: relative;">
+            <img id="modalIgImg" src="" style="width:100%; height:100%; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, black, transparent); padding: 20px 16px 12px;">
+                <div style="font-weight: 800; color: white; font-size: 1.1rem;" id="modalIgName"></div>
+                <div style="font-size: 0.7rem; color: #ffddcc;" id="modalIgCat"></div>
+            </div>
+            <div style="position: absolute; top: 12px; left: 12px; background: white; padding: 4px 12px; border-radius: 40px; font-weight: 800; font-size: 0.7rem;">🐻 Elona's Toys</div>
+        </div>
+        <div style="padding: 20px;">
+            <div id="modalIgCaption" style="background: #F8F2EE; padding: 12px; border-radius: 20px; font-size: 0.8rem; line-height: 1.5; margin-bottom: 16px; max-height: 150px; overflow-y: auto;"></div>
+            <div style="display: flex; gap: 12px;">
+                <button onclick="closeIgModal()" style="flex:1; background:#eee; border:none; padding:12px; border-radius: 60px; font-weight:600;">Close</button>
+                <button id="copyCaptionBtn" style="flex:2; background: linear-gradient(135deg,#f09433,#e6683c); border:none; color:white; border-radius: 60px; font-weight:700;">📋 Copy Caption</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // PRODUCTS DATABASE (rich data for full site)
+    const productsDB = {
+        plush: [
+            { name: "Giant Teddy Bear", cat: "Plush & Dolls", desc: "Super-soft 60cm bear", age: "0+", tag: "hot", img: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=500&h=500&fit=crop", igText: "🐻 Giant Teddy Bear — the cuddliest companion! Perfect for hugs." },
+            { name: "Plush Fox", cat: "Plush & Dolls", desc: "Adorable orange fox", age: "0+", tag: "", img: "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=500&h=500&fit=crop", igText: "🦊 Cute fox is ready to be your little one's bestie!" },
+            { name: "Unicorn Plush", cat: "Plush & Dolls", desc: "Rainbow magical unicorn", age: "1+", tag: "hot", img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&h=500&fit=crop", igText: "🦄 Magic in every hug! Rainbow unicorn plush" },
+            { name: "Stuffed Elephant", cat: "Plush & Dolls", desc: "Gentle grey elephant", age: "0+", tag: "", img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&h=500&fit=crop&sat=-50", igText: "🐘 Tiny hands, big love! Soft elephant" },
+            { name: "Princess Fashion Doll", cat: "Plush & Dolls", desc: "Dress-up doll", age: "3+", tag: "hot", img: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=500&h=500&fit=crop", igText: "👸 Let imagination shine! Princess doll with outfits" },
+            { name: "Mermaid Doll", cat: "Plush & Dolls", desc: "Shimmer tail", age: "3+", tag: "", img: "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=500&h=500&fit=crop", igText: "🧜‍♀️ Dive into mermaid magic!" }
+        ],
+        educational: [
+            { name: "Montessori Stacking Rings", cat: "Educational", desc: "Motor skills fun", age: "1+", tag: "hot", img: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=500&h=500&fit=crop", igText: "🌈 Montessori stacking rings — build coordination" },
+            { name: "Number Blocks Set", cat: "Educational", desc: "Foam blocks 1-10", age: "2+", tag: "", img: "https://images.unsplash.com/photo-1560343776-97e7d202ff0e?w=500&h=500&fit=crop", igText: "🔢 Learn numbers the fun way!" },
+            { name: "Alphabet Wooden Puzzle", cat: "Educational", desc: "26 letters", age: "2+", tag: "", img: "https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=500&h=500&fit=crop", igText: "A is for awesome! Wooden alphabet puzzle" },
+            { name: "Junior Science Kit", cat: "Educational", desc: "20 experiments", age: "6+", tag: "hot", img: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=500&h=500&fit=crop", igText: "🔬 Future scientist! 20 safe experiments" }
+        ],
+        fashion: [
+            { name: "Colorful Onesie Pack", cat: "Baby Fashion", desc: "5 cotton onesies", age: "0-18m", tag: "hot", img: "https://images.unsplash.com/photo-1522771930-78848d9293e8?w=500&h=500&fit=crop", igText: "🌈 Rainbow onesies — soft & adorable!" },
+            { name: "Baby Moccasins", cat: "Baby Fashion", desc: "Soft sole leather", age: "0-18m", tag: "hot", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop", igText: "👟 Tiny steps, big style! Leather moccasins" }
+        ],
+        outdoor: [
+            { name: "RC Racing Car", cat: "Outdoor & RC", desc: "High-speed remote", age: "6+", tag: "hot", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&h=500&fit=crop", igText: "🏎️ Race ready! 2.4GHz RC car" },
+            { name: "RC Drone", cat: "Outdoor & RC", desc: "Altitude hold", age: "8+", tag: "hot", img: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=500&h=500&fit=crop", igText: "🚁 Beginner drone with LED lights" }
+        ],
+        essentials: [
+            { name: "Baby Stroller", cat: "Essentials", desc: "Foldable & light", age: "0-3y", tag: "hot", img: "https://images.unsplash.com/photo-1586769852044-692d6e3703f0?w=500&h=500&fit=crop", igText: "🛺 Smooth strolls guaranteed!" },
+            { name: "Baby Monitor Camera", cat: "Essentials", desc: "Night vision", age: "0+", tag: "new", img: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=500&h=500&fit=crop&hue=180", igText: "👀 Peace of mind with 2-way audio" }
+        ]
+    };
+
+    // Ensure each category has at least 4 items (for demonstration consistency)
+    for(let k in productsDB){
+        if(productsDB[k].length < 4){
+            const fallback = { name: `More ${k} items`, cat: k, desc: "Great variety in-store", age: "0+", tag: "", img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&h=500&fit=crop", igText: `Check our collection of ${k} at Elona's Toys!` };
+            while(productsDB[k].length < 4) productsDB[k].push({...fallback, name: `${fallback.name} ✨`});
+        }
+    }
+
+    function renderProductCard(p, catId) {
+        const badgeHtml = p.tag === 'hot' ? `<span class="badge-hot">🔥 Hot</span>` : '';
+        return `<div class="product-card">
+            <div class="product-img">
+                <img src="${p.img}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=500&fit=crop'">
+                ${badgeHtml}
+                <button class="ig-preview-btn" onclick="openInstagramModal('${p.img.replace(/'/g, "\\'")}', '${p.name.replace(/'/g, "\\'")}', '${(p.igText || p.desc).replace(/'/g, "\\'")}', '${p.cat}')"><i class="fab fa-instagram"></i></button>
+            </div>
+            <div class="product-info">
+                <div class="product-category">${p.cat}</div>
+                <div class="product-name">${p.name}</div>
+                <div class="product-desc">${p.desc}</div>
+                <div class="product-age">Ages ${p.age}</div>
+                <div class="card-footer">
+                    <div class="price-tag">Inquire price</div>
+                    <button class="wa-btn" onclick="askWhatsApp('${p.name.replace(/'/g, "\\'")}')"><i class="fab fa-whatsapp"></i> Ask</button>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    function renderCategory(categoryId, containerId) {
+        const items = productsDB[categoryId] || [];
+        const html = items.map(p => renderProductCard(p, categoryId)).join('');
+        document.getElementById(containerId).innerHTML = html;
+    }
+
+    function buildFeatured() {
+        const featuredItems = [
+            ...productsDB.plush.slice(0,1),
+            ...productsDB.educational.slice(0,1),
+            ...productsDB.fashion.slice(0,1),
+            ...productsDB.outdoor.slice(0,1),
+            ...productsDB.essentials.slice(0,1)
+        ];
+        document.getElementById('featured-grid').innerHTML = featuredItems.map(p => renderProductCard(p, 'featured')).join('');
+    }
+
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+        document.getElementById(`${pageId}-page`).classList.add('active-page');
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            if(btn.getAttribute('data-page') === pageId) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function askWhatsApp(productName) {
+        window.open(`https://wa.me/96178702712?text=Hi%20Elona's%20Toys!%20I'm%20interested%20in%20"${encodeURIComponent(productName)}".%20Can%20you%20tell%20me%20the%20price%20and%20availability%3F`, '_blank');
+    }
+
+    let currentModalCaption = "";
+    function openInstagramModal(imgUrl, name, igText, category) {
+        const finalCaption = `${igText}\n\n✅ Available at Elona's Toys\n📍 Khaldeh, Facing Rammal Supermarket\n💬 Order via WhatsApp: 78 702 712\n\n#ElonasToys #KidsStoreLebanon`;
+        currentModalCaption = finalCaption;
+        document.getElementById('modalIgImg').src = imgUrl;
+        document.getElementById('modalIgName').innerText = name;
+        document.getElementById('modalIgCat').innerText = category;
+        document.getElementById('modalIgCaption').innerText = finalCaption;
+        document.getElementById('igModal').style.display = 'flex';
+    }
+    function closeIgModal(event) {
+        if(event && event.target !== document.getElementById('igModal') && event.target.closest) return;
+        document.getElementById('igModal').style.display = 'none';
+    }
+    document.getElementById('copyCaptionBtn')?.addEventListener('click', () => {
+        navigator.clipboard.writeText(currentModalCaption);
+        const btn = document.getElementById('copyCaptionBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => btn.innerText = '📋 Copy Caption', 2000);
+    });
+    window.askWhatsApp = askWhatsApp;
+    window.openInstagramModal = openInstagramModal;
+    window.closeIgModal = closeIgModal;
+    window.showPage = showPage;
+
+    // attach nav event listeners
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const page = btn.getAttribute('data-page');
+            if(page) showPage(page);
+        });
+    });
+
+    renderCategory('plush', 'plush-grid');
+    renderCategory('educational', 'educational-grid');
+    renderCategory('fashion', 'fashion-grid');
+    renderCategory('outdoor', 'outdoor-grid');
+    renderCategory('essentials', 'essentials-grid');
+    buildFeatured();
+    // set active home
+    showPage('home');
+</script>
+</body>
+</html>
